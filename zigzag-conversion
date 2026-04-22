@@ -1,0 +1,22 @@
+class Solution:
+    def convert(self, s: str, numRows: int) -> str:
+
+        oneLists=[[] for _ in range(numRows)]
+        char_list = list(s)
+        toggle = False
+        i=0
+
+        if numRows == 1 or numRows >= len(char_list):
+            return s
+
+        for c in char_list:
+            oneLists[i].append(c)
+
+            if i == numRows-1 or  i == 0:
+                toggle = not toggle
+
+            i +=1 if toggle else -1
+
+        result = "".join(["".join(onelist) for onelist in oneLists])
+
+        return result
