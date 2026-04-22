@@ -1,0 +1,21 @@
+class Solution:
+    def reverse(self, x: int) -> int:
+        INT_MIN, INT_MAX = -2**31, 2**31 -1
+        
+        signed = -1 if x < 0 else 1
+        val: int = 0
+        sum=abs(x)
+        while (sum != 0 ):
+            carry = sum % 10
+
+            sum = sum // 10
+
+            if val > INT_MAX //10 or (val == INT_MAX // 10 and carry > 7):
+                return 0
+
+            val = val*10 + carry
+
+        return val * signed
+
+
+        
