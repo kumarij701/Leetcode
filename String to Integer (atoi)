@@ -1,0 +1,36 @@
+class Solution:
+    def myAtoi(self, s: str) -> int:
+        news = s.lstrip()
+
+        if not news:
+            return 0
+
+        char_list = list(news)
+        return_list = []
+        i=0
+        if (char_list[0] == '-'):
+            return_list.append('-')
+            i = i+1
+        elif (char_list[0] == '+' and i==0):
+            i = i+1
+
+        while(i < len(char_list)):
+            if not char_list[i].isdigit():
+                break
+            else:
+                return_list.append(char_list[i])
+                i = i+1
+
+        if return_list == ['-'] or len(return_list) == 0:
+            return 0
+            
+        if not len(return_list)==0:
+            return_val = int("".join(return_list))
+            if -(2**31) > return_val:
+                return_val = -(2**31)
+            elif (2**31)-1 < return_val:
+                return_val = (2**31)-1
+        else:
+            return_val = 0
+        
+        return return_val
